@@ -1,0 +1,418 @@
+/* Reset e configurações gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Remover estilos que interferem com o site principal */
+.game-container {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+}
+
+/* Container principal do jogo - ajustado para integrar com o site */
+.game-container {
+    width: 100%;
+    min-height: 600px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+}
+
+/* Canvas do jogo */
+.game-canvas {
+    width: 800px;
+    height: 600px;
+    background: linear-gradient(180deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    border: 3px solid #4a90e2;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(74, 144, 226, 0.5);
+}
+
+/* Interface do usuário */
+.ui {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 15px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+.ui div {
+    font-size: 16px;
+    font-weight: bold;
+    color: #4a90e2;
+    text-shadow: 0 0 10px rgba(74, 144, 226, 0.8);
+}
+
+.ui span {
+    color: #fff;
+    margin-left: 5px;
+}
+
+/* Jogador */
+.player {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #ff6b6b, #feca57);
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+    transition: all 0.1s ease;
+    z-index: 5;
+}
+
+.player::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Elementos do jogo (estrelas, inimigos, etc.) */
+.star {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: starGlow 2s ease-in-out infinite alternate;
+    z-index: 3;
+}
+
+@keyframes starGlow {
+    0% { 
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+        transform: scale(1);
+    }
+    100% { 
+        box-shadow: 0 0 20px rgba(255, 215, 0, 1);
+        transform: scale(1.1);
+    }
+}
+
+.enemy {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 15px rgba(231, 76, 60, 0.6);
+    animation: enemyFloat 3s ease-in-out infinite alternate;
+    z-index: 3;
+}
+
+@keyframes enemyFloat {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-10px); }
+}
+
+/* Modal de perguntas */
+.question-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    padding: 30px;
+    border-radius: 15px;
+    border: 3px solid #4a90e2;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    z-index: 20;
+    display: none;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+}
+
+.question-modal h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#answerButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.answer-btn {
+    background: linear-gradient(45deg, #27ae60, #2ecc71);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.answer-btn:hover {
+    background: linear-gradient(45deg, #2ecc71, #27ae60);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+}
+
+.answer-btn:active {
+    transform: translateY(0);
+}
+
+.answer-btn.correct {
+    background: linear-gradient(45deg, #27ae60, #2ecc71);
+    border-color: #fff;
+}
+
+.answer-btn.incorrect {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    border-color: #fff;
+}
+
+/* Game Over */
+.game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    padding: 40px;
+    border-radius: 15px;
+    border: 3px solid #e74c3c;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    z-index: 20;
+    display: none;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.game-over h2 {
+    font-size: 28px;
+    color: #e74c3c;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.game-over p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    color: #bdc3c7;
+}
+
+.restart-btn {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.restart-btn:hover {
+    background: linear-gradient(45deg, #2980b9, #3498db);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+/* Instruções */
+.instructions {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #bdc3c7;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+/* Efeitos de partículas de fundo */
+.game-canvas::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, #fff, transparent),
+        radial-gradient(2px 2px at 40% 70%, #fff, transparent),
+        radial-gradient(1px 1px at 90% 40%, #fff, transparent),
+        radial-gradient(1px 1px at 50% 50%, #fff, transparent),
+        radial-gradient(2px 2px at 80% 10%, #fff, transparent);
+    background-size: 200px 200px;
+    animation: stars 10s linear infinite;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+@keyframes stars {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-200px); }
+}
+
+/* Responsividade - ajustada para o contexto do site */
+@media (max-width: 850px) {
+    .game-container {
+        padding: 10px;
+    }
+    
+    .game-canvas {
+        width: 100%;
+        height: 500px;
+        max-width: 800px;
+    }
+    
+    .ui {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .ui div {
+        font-size: 14px;
+    }
+    
+    .question-modal {
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .question-modal h3 {
+        font-size: 18px;
+    }
+    
+    .answer-btn {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-container {
+        padding: 5px;
+    }
+    
+    .game-canvas {
+        width: 100%;
+        height: 400px;
+        border-radius: 10px;
+    }
+    
+    .ui {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        padding: 8px 12px;
+    }
+    
+    .ui div {
+        font-size: 12px;
+    }
+    
+    .player {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .star {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .enemy {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .instructions {
+        bottom: 10px;
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+}
+
+/* Animações de entrada */
+.game-canvas {
+    animation: gameStart 0.5s ease-out;
+}
+
+@keyframes gameStart {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Efeitos de colisão */
+.player.hit {
+    animation: playerHit 0.5s ease-out;
+}
+
+@keyframes playerHit {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.2); }
+    50% { transform: scale(0.8); }
+    75% { transform: scale(1.1); }
+}
+
+/* Efeito de coleta de estrela */
+.star.collected {
+    animation: starCollected 0.5s ease-out forwards;
+}
+
+@keyframes starCollected {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.collectible {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.7);
+    z-index: 5; /* Garante que fiquem acima do fundo */
+}

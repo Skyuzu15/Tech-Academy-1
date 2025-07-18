@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games 2025 - Projeto Acadêmico</title>
+    <link rel="stylesheet" href="Style/Style.CSS">
+    <link rel="stylesheet" href="Style/jogo.CSS">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🎮 Games 2025</h1>
+            <p class="subtitle">Projeto Acadêmico - Desenvolvimento Web</p>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link active" onclick="showSection('home')">Home</a></li>
+                    <li><a href="#" class="nav-link" onclick="showSection('jogo')">🚀 Aventura Espacial</a></li>
+                    <li><a href="#" class="nav-link" onclick="showSection('projeto')">Projeto</a></li>
+                    <li><a href="#" class="nav-link" onclick="showSection('tecnologias')">Tecnologias</a></li>
+                    <li><a href="#" class="nav-link" onclick="showSection('desenvolvimento')">Desenvolvimento</a></li>
+                    <li><a href="#" class="nav-link" onclick="showSection('contato')">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <!-- Home Section -->
+            <section id="home" class="content-section active">
+                <h2>🚀 Bem-vindo ao Games 2025</h2>
+                <p>Este é um projeto acadêmico desenvolvido como parte do curso de Desenvolvimento Web. Nosso objetivo é criar uma plataforma para jogos online que demonstre as práticas de desenvolvimento web.</p>
+                
+                <div class="demo-section">
+                    <h3>🎯 Demonstração do Projeto</h3>
+                    <p>Experimente nosso jogo educativo:</p>
+                    <button class="demo-btn" onclick="showSection('jogo')">🚀 Aventura Espacial</button>
+                    <button class="demo-btn" onclick="mostrarDemo('perfil')">👤 Perfil</button>
+                    <button class="demo-btn" onclick="mostrarDemo('ranking')">🏆 Ranking</button>
+                </div>
+
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Funcionalidades</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Tecnologias</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Responsivo</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Jogo Section -->
+            <section id="jogo" class="content-section">
+                <h2>🚀 Aventura Espacial</h2>
+                <p>Um jogo educativo desenvolvido com HTML, CSS e JavaScript puro!</p>
+                
+                <div class="game-container">
+                    <div class="game-canvas" id="gameCanvas">
+                        <div class="ui">
+                            <div>Pontuação: <span id="score">0</span></div>
+                            <div>Vidas: <span id="lives">3</span></div>
+                            <div>Nível: <span id="level">1</span></div>
+                            <div>Coletados: <span id="collected">0</span>/5</div>
+                        </div>
+                        
+                        <div class="player" id="player"></div>
+                        
+                        <div class="question-modal" id="questionModal">
+                            <h3 id="questionText"></h3>
+                            <div id="answerButtons"></div>
+                        </div>
+                        
+                        <div class="game-over" id="gameOver">
+                            <h2 id="gameOverTitle">Game Over!</h2>
+                            <p id="gameOverText">Sua pontuação final: <span id="finalScore">0</span></p>
+                            <button class="restart-btn" onclick="restartGame()">Jogar Novamente</button>
+                        </div>
+                        
+                        <div class="instructions">
+                            Use as setas do teclado para mover. Colete estrelas e evite inimigos!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-info">
+                    <h3>📖 Sobre o Jogo</h3>
+                    <p>Aventura Espacial é um jogo educativo que combina diversão e aprendizado. Controle sua nave espacial, colete estrelas e responda perguntas para avançar de nível!</p>
+                    
+                    <div class="game-features">
+                        <div class="feature">
+                            <h4>🎮 Jogabilidade</h4>
+                            <p>Controles simples e intuitivos usando as setas do teclado</p>
+                        </div>
+                        <div class="feature">
+                            <h4>📚 Educativo</h4>
+                            <p>Perguntas desafiadoras para testar seus conhecimentos</p>
+                        </div>
+                        <div class="feature">
+                            <h4>🏆 Pontuação</h4>
+                            <p>Sistema de pontuação e níveis progressivos</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projeto Section -->
+            <section id="projeto" class="content-section">
+                <h2>📋 Descrição do Projeto</h2>
+                <p>O Games 2025 é uma plataforma web para jogos online que combina HTML, CSS e JavaScript para criar uma experiência completa para os usuários.</p>
+                
+                <div class="cards-container">
+                    <div class="card">
+                        <h3>🎮 Catálogo de Jogos</h3>
+                        <p>Sistema de gerenciamento de jogos com categorias e avaliações dos usuários.</p>
+                    </div>
+                    <div class="card">
+                        <h3>👥 Sistema de Usuários</h3>
+                        <p>Cadastro e login de usuários com perfis personalizados.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🏆 Sistema de Pontuação</h3>
+                        <p>Rankings e sistema de pontuação para engajar os usuários.</p>
+                    </div>
+                    <div class="card">
+                        <h3>📱 Design Responsivo</h3>
+                        <p>Interface que funciona em computadores, tablets e celulares.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tecnologias Section -->
+            <section id="tecnologias" class="content-section">
+                <h2>💻 Tecnologias Utilizadas</h2>
+                <p>Nosso projeto foi desenvolvido usando as tecnologias web básicas:</p>
+                
+                <div class="tech-list">
+                    <div class="tech-item">HTML5</div>
+                    <div class="tech-item">CSS3</div>
+                    <div class="tech-item">JavaScript</div>
+                    <div class="tech-item">Responsive Design</div>
+                </div>
+
+                <div class="cards-container">
+                    <div class="card">
+                        <h3>🌐 HTML5</h3>
+                        <p>Estrutura semântica da página com tags modernas para melhor organização do conteúdo.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🎨 CSS3</h3>
+                        <p>Estilização avançada com Flexbox, animações e design responsivo para todos os dispositivos.</p>
+                    </div>
+                    <div class="card">
+                        <h3>⚡ JavaScript</h3>
+                        <p>Interatividade e funcionalidades dinâmicas para melhorar a experiência do usuário.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Desenvolvimento Section -->
+            <section id="desenvolvimento" class="content-section">
+                <h2>🔧 Processo de Desenvolvimento</h2>
+                <p>O desenvolvimento do projeto foi dividido em etapas organizadas:</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>📋 Planejamento</h3>
+                        <p>Definição dos requisitos do projeto e criação do layout básico.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>🎨 Design</h3>
+                        <p>Criação do design visual e escolha das cores e fontes.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>💻 Desenvolvimento HTML</h3>
+                        <p>Estruturação do conteúdo com HTML5 semântico.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>🎨 Estilização CSS</h3>
+                        <p>Aplicação dos estilos e criação do design responsivo.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>⚡ Funcionalidades JavaScript</h3>
+                        <p>Implementação da interatividade e funcionalidades dinâmicas.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>🧪 Testes</h3>
+                        <p>Teste da aplicação em diferentes dispositivos e navegadores.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contato Section -->
+            <section id="contato" class="content-section">
+                <h2>📞 Entre em Contato</h2>
+                <p>Tem alguma dúvida sobre o projeto? Entre em contato conosco!</p>
+                
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="assunto">Assunto:</label>
+                        <input type="text" id="assunto" name="assunto" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem:</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                    </div>
+                    <button type="button" class="btn" onclick="enviarMensagem()">Enviar Mensagem</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Games 2025 - Projeto Acadêmico</p>
+            <p>Desenvolvido pelo aluno Marlon Vinicius</p>
+        </footer>
+    </div>
+    
+    <script src="Js/Script.js"></script>
+    <script src="Js/jogo.js"></script>
+</body>
+</html>

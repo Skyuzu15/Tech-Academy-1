@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura Espacial - Jogo Educativo</title>
+    <link rel="stylesheet" href="style/jogo.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-canvas" id="gameCanvas">
+            <div class="ui">
+                <div>Pontuação: <span id="score">0</span></div>
+                <div>Vidas: <span id="lives">3</span></div>
+                <div>Nível: <span id="level">1</span></div>
+                <div>Coletados: <span id="collected">0</span>/5</div>
+            </div>
+
+            <div class="player" id="player"></div>
+
+            <div class="question-modal" id="questionModal">
+                <h3 id="questionText"></h3>
+                <div id="answerButtons"></div>
+            </div>
+
+            <div class="game-over" id="gameOver">
+                <h2 id="gameOverTitle">Game Over!</h2>
+                <p id="gameOverText">Sua pontuação final: <span id="finalScore">0</span></p>
+                <button class="restart-btn" onclick="restartGame()">Jogar Novamente</button>
+            </div>
+
+            <div class="instructions">
+                Use as setas do teclado para mover. Colete estrelas e evite inimigos!
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jogo.js"></script>
+</body>
+</html>
